@@ -90,7 +90,6 @@ const useWordle = (solution) => {
       }
       if (turn === 5 && currentGuess !== solution) {
         saveGame.push({ "turn": null, "solution": solution })
-        console.log(saveGame)
         localStorage.setItem('matches', JSON.stringify(saveGame))
       }
       // do not allow duplicate words

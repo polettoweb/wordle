@@ -10,12 +10,15 @@ function App() {
 
   useEffect(() => {
     const stat = localStorage.getItem('matches') !== null && JSON.parse(localStorage.getItem('matches'))
-    console.log(stat)
-    setMatches(stat.length)
-    if (stat) {
+    if (stat.length) {
       const lostMatches = stat.filter(item => item.turn === null)
+      setMatches(stat.length)
       setLost(lostMatches.length)
       setWon(stat.length - lostMatches.length)
+    } else {
+      setMatches(0)
+      setLost(0)
+      setWon(0)
     }
   }, [])
 
