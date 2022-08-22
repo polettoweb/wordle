@@ -11,8 +11,10 @@ function App() {
     const stat = localStorage.getItem('matches') !== null && JSON.parse(localStorage.getItem('matches'))
     console.log(stat)
     setMatches(stat.length)
-    const lostMatches = stat.filter(item => item.turn === null)
-    setLost(lostMatches.length)
+    if (stat) {
+      const lostMatches = stat.filter(item => item.turn === null)
+      setLost(lostMatches.length)
+    }
   }, [])
 
   
