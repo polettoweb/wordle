@@ -6,6 +6,7 @@ function App() {
   const [solution, setSolution] = useState(null)
   const [matches, setMatches] = useState(0)
   const [lost, setLost] = useState(0)
+  const [won, setWon] = useState(0)
 
   useEffect(() => {
     const stat = localStorage.getItem('matches') !== null && JSON.parse(localStorage.getItem('matches'))
@@ -14,6 +15,7 @@ function App() {
     if (stat) {
       const lostMatches = stat.filter(item => item.turn === null)
       setLost(lostMatches.length)
+      setWon(stat.length - lostMatches.length)
     }
   }, [])
 
@@ -31,7 +33,7 @@ function App() {
       <h1>Wordle</h1>
       <div className="container">
         <p>Total Matches: {matches}</p>
-        <p>Won: {matches - lost}</p>
+        <p>Won: {won}</p>
         <p>Lost: {lost}</p>
       </div>
       {solution && <Wordle solution={solution} />}
