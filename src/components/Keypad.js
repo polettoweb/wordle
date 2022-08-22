@@ -7,7 +7,6 @@ export default function Keypad({ usedKeys }) {
     window.dispatchEvent(new KeyboardEvent('keyup', {'key': key}))
   }
 
-
   return (
     <div className="keypad">
       {letters && letters.map(l => {

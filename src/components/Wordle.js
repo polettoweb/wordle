@@ -26,10 +26,7 @@ export default function Wordle({ solution }) {
     return () => (window.removeEventListener('keyup', handleKeyup))
   }, [handleKeyup, isCorrect, turn])
 
-  const reset = () => { 
-    // setShowModal(false)
-    window.location.reload()
-  }
+  const reset = () => window.location.reload()
 
   return (
     <div>

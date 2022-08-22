@@ -1,8 +1,4 @@
-import React from 'react'
-
 export default function Modal({ isCorrect, solution, turn, action }) {
-
-
   return (
     <div className="modal">
         <div>
