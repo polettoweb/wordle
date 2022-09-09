@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import db from '../db.json'
 
 const useWordle = (solution) => {
   const [turn, setTurn] = useState(0) 
@@ -9,6 +10,7 @@ const useWordle = (solution) => {
   const [usedKeys, setUsedKeys] = useState({}) // {a: 'grey', b: 'green', c: 'yellow'} etc
   const [message, setMessage] = useState('')
   
+  const simpleSolution = [...db.solutions].map(item => item.word)
   const saveGame = (localStorage.getItem('matches') === null) ? [] : JSON.parse(localStorage.getItem('matches'))
   // format a guess into an array of letter objects 
   // e.g. [{key: 'a', color: 'yellow'}]
@@ -79,14 +81,16 @@ const useWordle = (solution) => {
     })
     setCurrentGuess('')
   }
-
   // handle keyup event & track current guess
   // if user presses enter, add the new guess
   const handleKeyup = ({ key }) => {
     setMessage('')
     if (key === 'Enter') {
-      if (!solution.includes(currentGuess)) {
+      if (!simpleSolution.includes(currentGuess)) {
         console.log('This is not a word')
+        console.log(currentGuess)
+        console.log(db.solutions)
+        console.log(simpleSolution.includes(currentGuess))
         setMessage('This is not a word. Try again.')
         setCurrentGuess('')
         return
