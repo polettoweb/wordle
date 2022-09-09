@@ -7,6 +7,7 @@ const useWordle = (solution) => {
   const [history, setHistory] = useState([]) // each guess is a string
   const [isCorrect, setIsCorrect] = useState(false)
   const [usedKeys, setUsedKeys] = useState({}) // {a: 'grey', b: 'green', c: 'yellow'} etc
+  const [message, setMessage] = useState('')
   
   const saveGame = (localStorage.getItem('matches') === null) ? [] : JSON.parse(localStorage.getItem('matches'))
   // format a guess into an array of letter objects 
@@ -82,15 +83,18 @@ const useWordle = (solution) => {
   // handle keyup event & track current guess
   // if user presses enter, add the new guess
   const handleKeyup = ({ key }) => {
+    setMessage('')
     if (key === 'Enter') {
       if (!solution.includes(currentGuess)) {
-        console.log('Thisi s not a word')
+        console.log('This is not a word')
+        setMessage('This is not a word. Try again.')
         setCurrentGuess('')
         return
       }
       // only add guess if turn is less than 5
       if (turn > 5) {
         console.log('you used all your guesses!')
+        setMessage('You used all your guesses! The solution was ' + solution)
         return
       }
       if (turn === 5 && currentGuess !== solution) {
@@ -100,6 +104,7 @@ const useWordle = (solution) => {
       // do not allow duplicate words
       if (history.includes(currentGuess)) {
         console.log('you already tried that word.')
+        setMessage('You already tried that word. Try again.')
         return
       }
       // check word is 5 chars
@@ -121,7 +126,7 @@ const useWordle = (solution) => {
     }
   }
 
-  return {turn, currentGuess, guesses, isCorrect, usedKeys, handleKeyup}
+  return {turn, currentGuess, guesses, isCorrect, usedKeys, handleKeyup, message}
 }
 
 export default useWordle
