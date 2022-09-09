@@ -83,6 +83,11 @@ const useWordle = (solution) => {
   // if user presses enter, add the new guess
   const handleKeyup = ({ key }) => {
     if (key === 'Enter') {
+      if (!solution.includes(currentGuess)) {
+        console.log('Thisi s not a word')
+        setCurrentGuess('')
+        return
+      }
       // only add guess if turn is less than 5
       if (turn > 5) {
         console.log('you used all your guesses!')
