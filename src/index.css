@@ -149,7 +149,7 @@ h1 {
   width: 120px;
 }
 .modal {
-  background: rgba(255,255,255,0.7);
+  background: rgba(0,0,0,0.7);
   position: fixed;
   width: 100%;
   height: 100%;
@@ -158,7 +158,7 @@ h1 {
 }
 .modal div {
   max-width: 480px;
-  background: #fff;
+  background: #333;
   padding: 40px;
   border-radius: 10px;
   margin: 10% auto;
@@ -167,9 +167,12 @@ h1 {
 .modal .solution {
   color: #ff004c;
   font-weight: bold;
-  font-size: 0.8em;
+  font-size: 3em;
   text-transform: uppercase;
   letter-spacing: 1px;
+}
+.modal p {
+  color: #eee;
 }
 
 /* keyframe animations */
