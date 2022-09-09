@@ -35,7 +35,7 @@ function App() {
   return (
     <div className="App">
       <h1>Wordle</h1>
-      <div className="container">
+      <div className="container stats">
         <p>Total Matches: {matches}</p>
         <p>Won: {won}</p>
         <p>Lost: {lost}</p>
