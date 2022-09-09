@@ -88,9 +88,6 @@ const useWordle = (solution) => {
     if (key === 'Enter') {
       if (!simpleSolution.includes(currentGuess)) {
         console.log('This is not a word')
-        console.log(currentGuess)
-        console.log(db.solutions)
-        console.log(simpleSolution.includes(currentGuess))
         setMessage('This is not a word. Try again.')
         setCurrentGuess('')
         return
