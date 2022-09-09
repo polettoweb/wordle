@@ -11,10 +11,19 @@ export default function Keypad({ usedKeys }) {
     <div className="keypad">
       {letters && letters.map(l => {
         const color = usedKeys[l.key]
-        return (
-          <div key={l.key} onClick={() => window.dispatchEvent(new KeyboardEvent('keyup', {'key': l.key}))} className={color}>{l.key}</div>
-        )
+        const button = <div key={l.key} onClick={() => window.dispatchEvent(new KeyboardEvent('keyup', { 'key': l.key }))} className={color}>{l.key}</div>
+        if (l.key === 'z') {
+          return (
+            <>
+              <br />
+              {button}
+            </>
+          )
+        } else {
+          return button
+        }
       })}
+
       <br />
       <div onClick={() => handleClick('Backspace')} className="backspace">{"<"}</div>
       <div onClick={() => handleClick('Enter')} className="enter">Enter</div>
