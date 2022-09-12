@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import db from '../db.json'
+// import db from '../db.json'
 
 const useWordle = (solution) => {
   const [turn, setTurn] = useState(0) 
@@ -10,7 +10,7 @@ const useWordle = (solution) => {
   const [usedKeys, setUsedKeys] = useState({}) // {a: 'grey', b: 'green', c: 'yellow'} etc
   const [message, setMessage] = useState('')
   
-  const simpleSolution = [...db.solutions].map(item => item.word)
+  // const simpleSolution = [...db.solutions].map(item => item.word)
   const saveGame = (localStorage.getItem('matches') === null) ? [] : JSON.parse(localStorage.getItem('matches'))
   // format a guess into an array of letter objects 
   // e.g. [{key: 'a', color: 'yellow'}]
@@ -86,12 +86,12 @@ const useWordle = (solution) => {
   const handleKeyup = ({ key }) => {
     setMessage('')
     if (key === 'Enter') {
-      if (!simpleSolution.includes(currentGuess)) {
-        console.log('This is not a word')
-        setMessage('This is not a word. Try again.')
-        setCurrentGuess('')
-        return
-      }
+      // if (!simpleSolution.includes(currentGuess)) {
+      //   console.log('This is not a word')
+      //   setMessage('This is not a word. Try again.')
+      //   setCurrentGuess('')
+      //   return
+      // }
       // only add guess if turn is less than 5
       if (turn > 5) {
         console.log('you used all your guesses!')
