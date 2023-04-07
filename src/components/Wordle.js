@@ -13,7 +13,6 @@ export default function Wordle({ solution }) {
   useEffect(() => {
     window.addEventListener('keyup', handleKeyup)
 
-
     if (isCorrect) {
       setTimeout(() => setShowModal(true), 2000)
       window.removeEventListener('keyup', handleKeyup)

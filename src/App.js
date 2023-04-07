@@ -10,24 +10,18 @@ function App() {
   const [won, setWon] = useState(0)
 
   useEffect(() => {
-    const stat = localStorage.getItem('matches') !== null && JSON.parse(localStorage.getItem('matches'))
-    if (stat.length) {
-      const lostMatches = stat.filter(item => item.turn === null)
-      setMatches(stat.length)
-      setLost(lostMatches.length)
-      setWon(stat.length - lostMatches.length)
-    } else {
-      setMatches(0)
-      setLost(0)
-      setWon(0)
-    }
+    const stat = JSON.parse(localStorage.getItem('matches')) || [];
+    const lostMatches = stat.filter((item) => item.turn === null);
+    setMatches(stat.length);
+    setLost(lostMatches.length);
+    setWon(stat.length - lostMatches.length);
   }, [])
 
   
   useEffect(() => {
     // random int between 0 & db.length
-    const randomSolution = db.solutions[Math.floor(Math.random()*db.solutions.length)].word
-    setSolution(randomSolution)
+    const randomSolution = db.solutions[Math.floor(Math.random() * db.solutions.length)].word;
+    setSolution(randomSolution);
 
     console.log(randomSolution)
   }, [setSolution])
